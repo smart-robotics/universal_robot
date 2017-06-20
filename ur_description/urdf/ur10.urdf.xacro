@@ -158,7 +158,7 @@
         <geometry>
           <cylinder length="0.27" radius="0.063"/>
         </geometry>
-        <origin xyz="0 -0.11 0.612" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 -0.11 ${upper_arm_length}" rpy="${pi/2} 0 0"/>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="${-ur10_a2}" mass="${upper_arm_mass}">
         <origin xyz="0.0 0.0 ${-ur10_a2/2.0}" rpy="0 0 0" />
@@ -196,9 +196,9 @@
       </collision>
       <collision>
         <geometry>
-          <cylinder length="0.12" radius="0.05"/>
+          <cylinder length="0.17" radius="0.05"/>
         </geometry>
-        <origin xyz="0 0 0.57" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 0.025 ${forearm_length}" rpy="${pi/2} 0 0"/>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="${-ur10_a3}" mass="${forearm_mass}">
         <origin xyz="0.0 0.0 ${-ur10_a3/2.0}" rpy="0 0 0" />
@@ -262,12 +262,6 @@
         </geometry>
         <origin xyz="0 0 0.03"/>
       </collision>
-      <collision>
-        <geometry>
-          <cylinder length="0.155" radius="0.05"/>
-        </geometry>
-        <origin xyz="0 0.0175 0.12" rpy="${pi/2} 0 0"/>
-      </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.12" mass="${wrist_2_mass}">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
@@ -296,6 +290,12 @@
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
       </visual>
+      <collision>
+        <geometry>
+          <cylinder length="0.155" radius="0.05"/>
+        </geometry>
+        <origin xyz="0 0.0175 0" rpy="${pi/2} 0 0"/>
+      </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.12" mass="${wrist_3_mass}">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
@@ -332,6 +332,11 @@
       <parent link="${prefix}wrist_3_link"/>
       <child link="${prefix}tool0"/>
     </joint>
+
+    <sr_ignore_collisions link1="${prefix}shoulder_link" link2="${prefix}upper_arm_link"/>
+    <sr_ignore_collisions link1="${prefix}upper_arm_link" link2="${prefix}forearm_link"/>
+    <sr_ignore_collisions link1="${prefix}forearm_link" link2="${prefix}wrist_2_link"/>
+    <sr_ignore_collisions link1="${prefix}wrist_2_link" link2="${prefix}wrist_3_link"/>
 
   </xacro:macro>
 </robot>
