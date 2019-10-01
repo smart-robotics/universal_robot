@@ -70,14 +70,14 @@
 		 wrist_3_lower_limit:=${-pi}    wrist_3_upper_limit:=${pi}">
 
     <link name="${prefix}base_link" >
-      <visual>
+      <!-- <visual>
         <geometry>
           <mesh filename="package://ur_description/meshes/ur10/visual/base.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
-      </visual>
+      </visual> -->
       <xacro:cylinder_inertial radius="0.075" length="0.038" mass="${base_mass}">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       </xacro:cylinder_inertial>
@@ -98,14 +98,14 @@
     </joint>
 
     <link name="${prefix}shoulder_link">
-      <visual>
+<!--       <visual>
         <geometry>
           <mesh filename="package://ur_description/meshes/ur10/visual/shoulder.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
-      </visual>
+      </visual> -->
       <collision>
         <geometry>
           <cylinder length="0.215" radius="0.08"/>
@@ -138,14 +138,14 @@
     </joint>
 
     <link name="${prefix}upper_arm_link">
-      <visual>
+<!--       <visual>
         <geometry>
           <mesh filename="package://ur_description/meshes/ur10/visual/upperarm.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
-      </visual>
+      </visual> -->
       <collision>
         <geometry>
           <cylinder length="0.527" radius="0.06"/>
@@ -178,14 +178,14 @@
     </joint>
 
     <link name="${prefix}forearm_link">
-      <visual>
+<!--       <visual>
          <geometry>
           <mesh filename="package://ur_description/meshes/ur10/visual/forearm.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
         </material>
-      </visual>
+      </visual> -->
       <collision>
         <geometry>
           <cylinder length="0.5" radius="0.05"/>
